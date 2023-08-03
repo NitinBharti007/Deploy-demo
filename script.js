@@ -15,7 +15,9 @@ function sendEmail(event) {
   
     const data = { name, email, subject, message };
   
-    fetch('https://nitinbharti.netlify.app/', {
+    const url = 'https://your-heroku-app-url/api/messages';
+  
+    fetch(url, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -36,3 +38,4 @@ function sendEmail(event) {
         alert('Failed to send message. Please try again later.');
       });
   }
+  

@@ -1,18 +1,15 @@
-import express from 'express';
-import { createTransport } from 'nodemailer';
-import { json, urlencoded } from 'body-parser';
-import cors from 'cors';
+const express = require('express');
+const cors = require('cors');
+const nodemailer = require('nodemailer');
 
 const app = express();
 const port = 3000;
 
-
-app.use(json());
-app.use(urlencoded({ extended: true }));
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 app.use(cors()); // Enable CORS for all origins
 
-
-const transporter = createTransport({
+const transporter = nodemailer.createTransport({
     service: 'Gmail',
     auth: {
         user: 'bhnitin198@gmail.com',
