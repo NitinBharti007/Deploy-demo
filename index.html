@@ -215,9 +215,8 @@
                             </h4>
                             <p class="timeline-text">
                               Currently, I am a Pre Final undergraduate at
-                              <span
-                                >UIET Chhatrapati Shahu Ji Maharaj
-                                University</span
+                              <span><a href="https://csjmu.ac.in/">UIET Chhatrapati Shahu Ji Maharaj
+                                University</a></span
                               >
                               Kanpur, here I am studying Information Technology
                               to pursuing my technical degree in the subject of
@@ -232,7 +231,7 @@
                             <h4>Intermediate</h4>
                             <p class="timeline-text">
                               I have completed my secondary from
-                              <span>Government Inter College</span> Basti, Uttar
+                              <span><a href="https://basti.nic.in/public-utility/government-inter-collage/">Government Inter College</a></span> Basti, Uttar
                               Pradesh(272001) through UP Board with my subjects
                               of P.C.M.
                             </p>
@@ -245,7 +244,7 @@
                             <h4>High School</h4>
                             <p class="timeline-text">
                               I have completed my higher from
-                              <span>R.K Educational Academy</span> Tema Rahmat
+                              <span><a href="https://r-k-educational-academy.business.site/">R.K Educational Academy</a></span> Tema Rahmat
                               Sant Kabir Nagar, Uttar Pradesh(272178) through UP
                               Board with my subjects of Science & Drawwing.
                             </p>
@@ -393,7 +392,9 @@
                 <div class="contact-info-item padd-15">
                   <div class="icon"><i class="fa fa-envelope"></i></div>
                   <h4>Email</h4>
-                  <p>bhnitin941@gmail.com</p>
+                  <a href="mailto:bhnitin941@gmail.com" target="_blank"
+                    >Send a message</a
+                  >
                 </div>
                 <div class="contact-info-item padd-15">
                   <div class="icon"><i class="fab fa-linkedin"></i></div>
@@ -470,7 +471,9 @@
                     </div>
                     <div class="row">
                       <div class="form-item col-12 padd-15">
-                        <button type="submit" class="btn">Send Message</button>
+                        <button type="button" id="createEmailBtn" class="btn">
+                          Create E-mail
+                        </button>
                       </div>
                     </div>
                   </form>
@@ -528,36 +531,31 @@
     ></script>
     <script src="script.js"></script>
     <script src="style-switcher.js"></script>
-    <script src="server.js"></script>
     <script>
-      function sendEmail(event) {
-        event.preventDefault();
+      // JavaScript code to handle the form submission and open the email client
+      document.addEventListener("DOMContentLoaded", function () {
+        const createEmailBtn = document.getElementById("createEmailBtn");
+        createEmailBtn.addEventListener("click", function (event) {
+          event.preventDefault(); // Prevent the default form submission
 
-        const name = document.getElementById("name").value;
-        const email = document.getElementById("email").value;
-        const subject = document.getElementById("subject").value;
-        const message = document.getElementById("message").value;
+          // Get form input values
+          const name = document.getElementById("name").value;
+          const email = document.getElementById("email").value;
+          const subject = document.getElementById("subject").value;
+          const message = document.getElementById("message").value;
 
-        const data = { name, email, subject, message };
+          // Construct the pre-filled email content
+          const emailContent = `Hi ${name},\n\n${message}\n\nRegards,\n${name}`;
 
-        fetch("http://localhost:3000/api/messages", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(data),
-        })
-          .then((response) => response.json())
-          .then((data) => {
-            console.log(data.message);
-            alert("Message sent successfully!");
-            document.getElementById("contactForm").reset();
-          })
-          .catch((error) => {
-            console.error("Error:", error);
-            alert("Failed to send message. Please try again later.");
-          });
-      }
+          // Create the mailto URI
+          const mailtoUri = `mailto:${email}?subject=${encodeURIComponent(
+            subject
+          )}&body=${encodeURIComponent(emailContent)}`;
+
+          // Open the default email client
+          window.location.href = mailtoUri;
+        });
+      });
     </script>
   </body>
 </html>
