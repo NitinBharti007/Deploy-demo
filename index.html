@@ -565,11 +565,8 @@
           const subject = document.getElementById("subject").value;
           const message = document.getElementById("message").value;
 
-          // Construct the pre-filled email content
-          // const emailContent = `Hi ${name},\n\n${message}\n\nRegards,\n${name}`;
-          // Construct the pre-filled email content for the user side
           // // Construct the pre-filled email content for the user side
-          const emailContent = `Hi Nitin,\n\nName: ${name}\n\nSubject: ${subject}\n\nMessage: ${message}\n\nBest regards,\n\nNitin Bharti`;
+          const emailContent = `Hi Nitin,\n\nName: ${name}\n\nMessage: ${message}\n\nBest regards,\nNitin Bharti`;
           // Create the mailto URI
           const mailtoUri = `mailto:bhnitin198@gmail.com?subject=${encodeURIComponent(
             subject
