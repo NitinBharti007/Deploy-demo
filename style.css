@@ -525,12 +525,13 @@ h3.my-profession{
     font-weight: 500;
 }
 .portfolio .portfolio-item{
-    margin-bottom: 60px;
+    margin-bottom: 50px;
     flex: 0 0 33.33%;
-    max-width: 40%;
+    max-width: 100%;
+    padding: 20px;
 }
 .portfolio .portfolio-item-inner{
-    border: 6px solid var(--bg-black-100);
+    border: 3px solid var(--bg-black-100);
     border-radius: 10px;
     overflow: hidden;
     cursor: pointer;
@@ -538,6 +539,12 @@ h3.my-profession{
 .portfolio .portfolio-item-inner .portfolio-img img{
     width: 100%;
     display: block;
+    padding: 12px;
+}
+.portfolio .portfolio-item-inner .portfolio-img .btn{
+    background-color: var(--skin-color);
+    padding: 12px;
+    width: fit-content;
 }
 .portfolio .portfolio-item-inner h2{
     text-align: center;
@@ -651,6 +658,7 @@ h3.my-profession{
 @media (max-width:991px) {
     .contact .contact-info-item,
     .portfolio .portfolio-item,
+    .portfolio .portfolio-item .btn,
     .service .service-item{
         flex: 0 0 50%;
         max-width: 50%;
@@ -675,6 +683,26 @@ h3.my-profession{
     .about .about-content .person-info{
         flex: 0 0 100%;
         max-width: 100%;
+    }
+}
+@media only screen and (max-width: 768px) {
+    .portfolio-item {
+      flex-basis: 50%;
+      max-width: 50%;
+    }
+    .btn {
+        margin-left: 0;
+        margin-right: 10px;
+    }
+}
+  @media only screen and (max-width: 576px) {
+    .portfolio-item {
+      flex-basis: 100%;
+      max-width: 100%;
+    }
+    .btn {
+      margin-left: 0;
+      margin-right: 10px;
     }
 }
 footer{
